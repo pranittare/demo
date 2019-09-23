@@ -47,6 +47,7 @@ export class RecipeEditComponent implements OnInit {
    } else {
      this.recipeService.addRecipe(this.recipeForm.value);
    }
+   this.onCancel();
   }
   private initForm(){
     let recipeName = '';
@@ -83,5 +84,17 @@ export class RecipeEditComponent implements OnInit {
 
   get controls(){
     return (this.recipeForm.get('ingredients')as FormArray).controls;
+  }
+  onSave(){
+    console.log('save')
+  }
+  onCancel(){
+    this.router.navigate(['../'], {relativeTo: this.route});
+
+  }
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+    // for clearing all (<FormArray>this.recipeForm.get('ingredients')).clear();
+
   }
 }
