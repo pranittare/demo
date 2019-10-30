@@ -1,0 +1,13 @@
+
+
+<div class="card" *ngFor="let product of products"  (click)= onSelect(product)> 
+    <div class="card-body">
+        <h5 class="card-title">{{product.shopping[0].name}}</h5>
+        <p class="card-text">Rs. {{product.shopping[0].amount}} / meter</p>
+        <p class="card-text"><small class="text-muted">{{product.shopping[0].description}}</small></p>
+
+    </div>
+    <img class="card-img-bottom" src=".../100px180/" alt="Card image cap">
+    </div>
+
+    <!-- [routerLink]="[index]" -->

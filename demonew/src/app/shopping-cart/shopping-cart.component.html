@@ -1,0 +1,26 @@
+
+
+    <div class="media container" (click)='handelClick($event)' (dblclick)="doubleClick(i)"   
+    *ngFor="let shopping of shoppings; let i = index " 
+    (click)="onEditItem(i)">
+    <img src="{{ shopping.imageurl }}" class="mr-3 control" alt="...">
+
+    <div class="media-body">
+        <!-- <app-shopping-edit></app-shopping-edit> -->
+        <hr>
+        <ul class="list-group">
+            <a class="list-group-item" 
+            style="cursor: pointer" >
+            {{ shopping.name }} ({{ shopping.amount }}) <br>
+            {{ shopping.description }} 
+        </a>
+
+        </ul>
+    </div>
+    <div class="row delete">
+    <div class="col-xs-2">
+        <button class="btn btn-danger" (click)='onDelete(i)'>X</button>
+
+        </div>
+    </div>
+</div>
