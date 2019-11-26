@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path")
 
 const postsRoutes = require("./routes/posts")
+const userRoutes = require("./routes/user")
 const app = express();
 
 mongoose.connect("mongodb+srv://pranit:2NEMMsK8ftonE9fk@cluster0-ffnpr.mongodb.net/node-angular?retryWrites=true&w=majority")
@@ -30,5 +31,7 @@ app.use((req, res, next) =>{
     next();
 });
 
-app.use("/api/posts",postsRoutes); 
+app.use("/api/posts",postsRoutes);
+app.use("/api/user",userRoutes);
+
 module.exports = app;
