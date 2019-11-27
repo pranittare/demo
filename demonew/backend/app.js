@@ -20,16 +20,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/images", express.static(path.join("backend/images")))
 // 2NEMMsK8ftonE9fk mongodb db pass
-app.use((req, res, next) =>{
+app.use((req, res, next) => {
+    // res.setHeader("Content-Type","application/x-www-form-urlencoded");
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", 
-    "Origin, X-Requested-With, Content-Type, Accept");
     res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-    )
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
     next();
-});
+  });
+//   RewriteEngine On
+//   RewriteCond %{REQUEST_METHOD} OPTIONS
+//   RewriteRule ^(.*)$ $1 [R=200,L]
 
 app.use("/api/posts",postsRoutes);
 app.use("/api/user",userRoutes);
