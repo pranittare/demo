@@ -1,0 +1,27 @@
+<div class="sticky">
+
+<mat-card>
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+            <input
+            matInput rows="2"
+            name="content" 
+            [ngModel]="post.content"
+            required
+            minlength="1"
+            #content = "ngModel"
+            placeholder="Type Here"> <span class="spacer"></span>
+            <mat-icon class="spacer" *ngIf="content.valid">import_export</mat-icon>           
+            <mat-error *ngIf="content.invalid"> Please enter Something </mat-error>
+        
+        </mat-form-field>
+        
+        <button 
+        mat-raised-button
+        color="accent"
+        type="submit">Send</button>
+
+    </form>
+
+</mat-card>
+</div>
