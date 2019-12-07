@@ -8,3 +8,6 @@ div.sticky {
     width: 100%;
     bottom: 10px;
 }
+mat-spinner {
+    margin: auto;
+}

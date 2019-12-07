@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { post } from 'selenium-webdriver/http';
+
 
 @Component({
   selector: 'app-post-list',
@@ -18,24 +21,53 @@ export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   index: number;
   private postSub: Subscription;
+  isLoading = false;
  
-  constructor(public postsService: PostsService) { }
+  post: Post;
+
+  private mode = 'create';
+  private postId: string;
+ 
+  constructor(public postsService: PostsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.postsService.getPosts();
 
     this.postSub = this.postsService.getPostUpdateListner()
       .subscribe((posts: Post[]) =>{
+        this.isLoading = false;
+
         this.posts = posts;
       })
   }
 
-  // onEdit(index) {
-  //   console.log(index)
-  //   this.postsService.getPost(index);
-  // }
-  doubleClick(index) {
-    this.onClicked = !this.onClicked
+  onEdit(id: string) {
+    // console.dir(index)
+    // this.onClicked = true;
+    // if (this.onClicked) {
+    //   this.postsService.updatePost(index,'sada')
+    // }
+    console.log('post list working')
+    // this.route.paramMap.subscribe((paramMap: ParamMap) =>{
+    //   if (paramMap.has('postId')) {
+    //     this.mode = 'edit'
+    //     this.postId = paramMap.get('postId')
+    //     console.log('post create')
+
+    //     this.post = this.postsService.getPost(this.postId);
+    //   } else {
+    //     this.mode = 'create'
+    //     this.postId = null;
+
+    //   }
+    // });
+  }
+  doubleClick(e) {
+   this.onClicked = !this.onClicked
+    // this.postsService.doubleClicked(postId);
+    console.log(e.srcElement.childNodes);
+
     // console.log(this.onClicked)
     // this.onEdit(index);
   }
