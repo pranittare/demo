@@ -12,7 +12,8 @@
             minlength="1"
             #content = "ngModel"
             placeholder="Type Here"> <span class="spacer"></span>
-            <mat-icon class="spacer" *ngIf="content.valid">import_export</mat-icon>           
+            <input type="file" style="display: none;" (change)="onFileSelected($event)" #fileInput>
+            <mat-icon class="spacer" *ngIf="content.valid" (click)="fileInput.click()">import_export</mat-icon>           
             <mat-error *ngIf="content.invalid"> Please enter Something </mat-error>
         
         </mat-form-field>

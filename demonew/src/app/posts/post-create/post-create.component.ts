@@ -3,6 +3,7 @@ import { Post } from '../post.model';
 import { NgForm } from '@angular/forms';
 import { PostsService } from '../posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-create',
@@ -16,9 +17,10 @@ export class PostCreateComponent implements OnInit {
   isLoading = false;
   private mode = 'create';
   private postId: string;
+  selectedFile = null
  
  
-  constructor(public postsService: PostsService, public route: ActivatedRoute) { }
+  constructor(public postsService: PostsService, public route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) =>{
@@ -60,4 +62,11 @@ export class PostCreateComponent implements OnInit {
 
     form.resetForm()
   }
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(event.target.files)
+
+    // this.http.post('http://localhost:3000/api/Images')
+  }
+
 }

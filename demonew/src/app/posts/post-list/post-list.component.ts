@@ -42,13 +42,13 @@ export class PostListComponent implements OnInit, OnDestroy {
       })
   }
 
-  onEdit(id: string) {
+  // onEdit(id: string) {
     // console.dir(index)
     // this.onClicked = true;
     // if (this.onClicked) {
     //   this.postsService.updatePost(index,'sada')
     // }
-    console.log('post list working')
+    // console.log('post list working')
     // this.route.paramMap.subscribe((paramMap: ParamMap) =>{
     //   if (paramMap.has('postId')) {
     //     this.mode = 'edit'
@@ -62,11 +62,12 @@ export class PostListComponent implements OnInit, OnDestroy {
 
     //   }
     // });
-  }
-  doubleClick(e) {
+  // }
+  doubleClick(index) {
    this.onClicked = !this.onClicked
     // this.postsService.doubleClicked(postId);
-    console.log(e.srcElement.childNodes);
+    
+    console.log(index);
 
     // console.log(this.onClicked)
     // this.onEdit(index);

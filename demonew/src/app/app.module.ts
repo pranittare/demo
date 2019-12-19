@@ -19,13 +19,17 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { HeaderComponent } from './header/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostEditComponent } from './posts/post-list/post-edit/post-edit.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
     PostListComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostEditComponent
+
   ],
   imports: [
     BrowserModule,
