@@ -1,0 +1,32 @@
+<div class="contriner">
+    <p>Total Loan Amount</p>
+
+    <mat-slider
+    thumbLabel
+    [displayWith]="toalLoan"
+    tickInterval="1000"
+    min="0"
+    max="100000" (change)="loan($event)">
+    </mat-slider>
+    <p>{{loanvalue}}</p>
+  
+    
+    <p>Existing Emi</p>
+    <mat-slider
+    thumbLabel
+    [displayWith]="totalEmi"
+    tickInterval="1000"
+    min="0"
+    max="100000"(change)="emi($event)" >
+    </mat-slider>
+    <p>{{emivalue}}</p>
+    <hr>
+    <button mat-button type="button"  [disabled]='buttonenable' (click)=onSubmit()>Next</button>
+</div>
+<div>
+    <p>Loan Amount {{loanvalue}} and Emi Amount  {{emivalue}}</p>
+</div>
+<!-- <div [disabled]='subjectreview'>
+    <p>hidden text</p>
+</div> -->
+
