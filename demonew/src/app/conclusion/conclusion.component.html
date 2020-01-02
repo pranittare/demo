@@ -1,0 +1,22 @@
+<div class="container">
+
+<h1>All Details</h1>
+<hr>
+<!-- <p> User {{personal | json}}</p> -->
+<div *ngFor="let user of personal">
+    <p> Date: {{user.date | date:'medium'}}</p>
+    <p> Email: {{user.email}}</p>
+    <p> Full Name: {{user.first}} {{user.last}}</p>
+    <p> Mobile No: {{user.mobile}}</p>
+        
+</div>
+<hr>
+<div *ngFor="let bank of occupation">
+    <p>Bank name: {{bank | json}}</p>
+
+</div>
+<hr><p> Loan {{loan}}</p>
+<hr>
+</div>
+<!-- <p>Message {{ message}}</p> -->
+<!-- <button (click)="newMessage()">Change</button> -->
