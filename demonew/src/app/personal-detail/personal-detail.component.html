@@ -1,0 +1,87 @@
+<div class="container">
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm" ngNativeValidate >
+    
+    <h1>Personal Details</h1>
+    <div>
+        <label for="email">Email</label>
+        <hr>
+        <input type="email" name="email" id="email" value="name"
+        ngModel
+        required
+        email
+        #email="ngModel"
+        >
+        <span class="help-block" *ngIf="!email.valid && email.touched">Please Enter Valid Email Address</span>
+        <br>
+    </div>
+    <div>
+        <label for="first">First Name</label>
+        <hr>
+        <input type="text" name="first" id="first" value="first"
+        #first="ngModel"
+        required
+        first
+        ngModel
+        minlength="3" maxlength="10">
+
+    <div *ngIf="first.invalid && (first.dirty || first.touched)" class="help-block">
+        <div *ngIf="first.errors.required">
+        Please Enter your First Name
+        </div>
+        <div *ngIf="first.errors.minlength">
+        First Name must be at least 3 characters long.
+        </div>
+        </div>
+        <br>
+    </div>
+    <div>
+        <label for="last">Last Name</label>
+        <hr>
+        <input type="text" name="last" id="last" value="last"
+        #last="ngModel"
+        last
+        required
+        ngModel>
+        <span class="help-block" *ngIf="!last.valid && last.touched">Please Enter your Last Name</span>
+        <br>
+    </div>
+    <div>
+        <label for="mobile">Mobile</label>
+        <hr>
+        <input type="number" name="mobile" id="mobile" value="mobile"
+        #mobile ="ngModel"
+        mobile
+        required
+      
+        ngModel
+        
+        pattern="^[1-9]{1}[0-9]{9}$">
+
+        <span *ngIf="!mobile.touched">(No need to add +91)</span> <br>
+        <span *ngIf="mobile.touched"></span>
+        <span class="help-block" *ngIf="!mobile.valid && mobile.touched">Please Enter your 10 digit Mobile number</span>
+        <br>
+
+    </div>
+    <div >
+        <label for="date">Date of Birth</label>
+        <hr>
+        <mat-form-field class="example-full-width">
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder='choose a date'
+            name="date"  ngModel required value="date" date #date="ngModel">
+        <span class="help-block" *ngIf="!date.valid && date.touched">Please enter your Birth Date</span>
+
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+            
+    </div>
+    <hr>
+
+    <button  mat-raised-button color="primary" type="submit" [disabled]='!f.valid'>Next</button>
+
+</form>
+</div>
+
+<!-- <p>Message {{ message}}</p> -->
